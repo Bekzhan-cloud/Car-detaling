@@ -6,7 +6,7 @@ The workflow is defined in `.github/workflows/github-ci.yml`.
 
 1. In **Settings -> Pages**, set the source to **GitHub Actions**.
 2. Keep the repository default branch as `main`.
-3. The workflow uses Node.js 20 and the committed root `package-lock.json`.
+3. The workflow uses Node.js 24 and the committed root `package-lock.json`.
 
 Every push to `main` and every pull request runs:
 
