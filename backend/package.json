@@ -5,8 +5,11 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "build": "prisma generate",
     "dev": "nodemon server.js",
+    "lint": "node -e \"const fs=require('fs'),cp=require('child_process'),path=require('path');function walk(d){return fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>{const p=path.join(d,e.name);return e.isDirectory()&&e.name!=='node_modules'?walk(p):p.endsWith('.js')?[p]:[]})}for(const f of walk('.')){const r=cp.spawnSync(process.execPath,['--check',f],{stdio:'inherit'});if(r.status)process.exit(r.status)}\"",
     "start": "node server.js",
+    "test": "node --test",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio"

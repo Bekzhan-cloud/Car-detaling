@@ -12,4 +12,5 @@ coverage
 dist
 build
 .next
+out
 *.log

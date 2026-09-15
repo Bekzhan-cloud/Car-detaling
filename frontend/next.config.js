@@ -1,16 +1,18 @@
 /** @type {import('next').NextConfig} */
-const repoName = process.env.NEXT_PUBLIC_REPO_NAME || 'Bekjan';
-const basePath = `/${repoName}`;
-const assetPrefix = `${basePath}/`;
+const repoName = process.env.NEXT_PUBLIC_REPO_NAME || "";
+const isStaticExport = process.env.NEXT_OUTPUT === "export";
 
 const nextConfig = {
-  output: 'export',
-  basePath,
-  assetPrefix,
+  output: isStaticExport ? "export" : "standalone",
+  ...(repoName
+    ? {
+        basePath: `/${repoName}`,
+        assetPrefix: `/${repoName}/`
+      }
+    : {}),
   trailingSlash: true,
   images: {
-    // Для статического экспорта отключаем оптимизацию image (next/image)
-    unoptimized: true,
+    unoptimized: isStaticExport,
     remotePatterns: [
       {
         protocol: "https",
